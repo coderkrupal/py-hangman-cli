@@ -120,7 +120,6 @@ def hangman_main():
     answer = random.choice(words)
     hint = ["_"] * len(answer)
     wrong_guass = 6
-    is_running = True
     while wrong_guass  > 0:
         hangman_man(wrong_guass)
         hangman_hint(hint)
@@ -131,6 +130,13 @@ def hangman_main():
                     hint[i] = letter
         else:
             wrong_guass -= 1 
+            
+        if '_' not in hint:
+            print("congratualtion ! you guessed correct word:",answer)
+            break
+        if wrong_guass == 0:
+            print("-------------you lost game----------")
+        
 
 if __name__ == "__main__":
     hangman_main()
